@@ -236,6 +236,80 @@ section {
 .section--marca-fuerte {
   filter: none; /* restaura contraste completo */
 }
+/* —————————————————————————————————
+   0) APAGAR EL CASCO FLOTANTE ANTIGUO
+   ————————————————————————————————— */
+.img-superior-derecha { 
+  display: none !important;
+}
+
+/* —————————————————————————————————
+   1) HEADER + LOGOS (PBI + CASCO)
+   ————————————————————————————————— */
+header {
+  background-color: var(--color-blanco);
+  color: var(--color-secundario);
+  padding: 12px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+header strong {
+  font-size: 1.1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Contenedor derecho con el logo PBI y el personaje con casco */
+.header-logos{
+  display: inline-flex;
+  align-items: flex-end;      /* alinea bases */
+  gap: 8px;
+  min-width: 120px;           /* evita saltos bruscos */
+}
+
+.logo-pbi{
+  max-height: 50px;
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
+/* Personaje con casco en la esquina superior derecha */
+.logo-casco{
+  max-height: 60px;           /* un poquito más alto que el logo */
+  height: 60px;
+  width: auto;
+  display: block;
+  opacity: .95;               /* sutil */
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.28))
+          drop-shadow(0 4px 10px rgba(0,0,0,.12));
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* —————————————————————————————————
+   2) RESPONSIVE
+   ————————————————————————————————— */
+@media (max-width: 992px){
+  .logo-pbi{ height: 44px; }
+  .logo-casco{ height: 52px; }
+}
+
+@media (max-width: 768px){
+  /* Oculta el casco para ganar espacio en móvil */
+  .logo-casco{ display: none; }
+  .logo-pbi{ height: 42px; }
+  header{ padding: 10px 18px; }
+}
+
+@media (max-width: 420px){
+  header strong{ font-size: 1rem; }
+}
 
   </style>
 </head>
