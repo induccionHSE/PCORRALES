@@ -185,6 +185,58 @@
       .img-superior-derecha { display: none; }
       .grid-dos-columnas, .comportamiento-grid, .vial-grid { grid-template-columns: 1fr !important; }
     }
+    /* 1) Apagar el <img> flotante del casco */
+.img-superior-derecha { 
+  display: none !important;
+}
+
+/* 2) Marca de agua en las secciones (casco al fondo, responsivo) */
+section {
+  position: relative;
+  /* Ajusta aquí la URL del casco (PNG con transparencia) */
+  --casco-url: url("https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png");
+
+  background-image: var(--casco-url);
+  background-repeat: no-repeat;
+  background-position: right 16px bottom 16px;     /* esquina inferior derecha */
+  background-size: clamp(120px, 16vw, 180px);      /* tamaño responsivo */
+}
+
+/* 3) Intensidad/contraste de la marca de agua 
+   (no bloquea clics ni texto porque es fondo) */
+section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* Halo sutil para separar el casco del fondo si es muy claro */
+  background: radial-gradient(180px 120px at calc(100% - 80px) calc(100% - 70px),
+              rgba(0, 90, 156, 0.10), transparent 65%);
+  z-index: 0;
+}
+
+/* 4) Ajuste global de opacidad perceptual del casco:
+   si lo ves muy presente, baja el alpha del halo (arriba) o usa este filtro tenue */
+section {
+  /* El filtro suaviza el contraste del logo sin afectar el contenido */
+  filter: saturate(0.95) opacity(0.92);
+}
+
+/* 5) En móviles lo ocultamos para no recargar visualmente */
+@media (max-width: 768px) {
+  section {
+    background-image: none;
+    filter: none;
+  }
+  section::after { background: none; }
+}
+
+/* 6) Si alguna sección necesita MÁS presencia del casco,
+   añade class="section--marca-fuerte" a ese <section> */
+.section--marca-fuerte {
+  filter: none; /* restaura contraste completo */
+}
+
   </style>
 </head>
 <body>
