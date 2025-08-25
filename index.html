@@ -3,322 +3,205 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inducción HSEQ – planta Corrales</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <title>Inducción HSEQ – Planta Buenavista</title>
   <style>
-    :root {
-      --color-primario: #005A9C;
-      --color-secundario: #003D6B;
-      --color-acento: #FF8C00;
-      --color-fondo: #f4f7f9;
-      --color-blanco: #ffffff;
-      --color-texto: #3a3a3a;
-      --color-error-fondo: #ffebeb;
-      --color-error-borde: #d93025;
-      --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.07);
-      --radio-borde: 10px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ======= FUENTE Y COLORES ======= */
     body {
-      font-family: 'Poppins', Arial, sans-serif;
+      font-family: 'Poppins', Arial, sans-serif;   /* Fuente moderna */
       line-height: 1.6;
-      background-color: var(--color-fondo);
-      color: var(--color-texto);
-    }
-    
-    #barraProgreso {
-      height: 5px;
-      background: linear-gradient(90deg, var(--color-primario), var(--color-acento));
-      width: 0%;
-      position: fixed; top: 0; left: 0; z-index: 1000;
-      transition: width 0.4s ease-out;
+      background-color: #f4f7f9;                   /* Fondo más suave */
+      margin: 0;
+      padding: 0;
+      color: #3a3a3a;
     }
 
     header {
-      background-color: var(--color-blanco);
-      color: var(--color-secundario);
-      padding: 12px 25px;
-      display: flex; align-items: center; justify-content: space-between;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      position: sticky; top: 0; z-index: 999;
+      background-color: #003366;   /* Azul corporativo */
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    header strong { font-size: 1.1rem; }
-    header img { max-height: 50px; }
-    
+
+    .header-logos {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .header-logos img {
+      max-height: 60px;
+      object-fit: contain;
+      border-radius: 8px;
+      background-color: #ffffff;
+      padding: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .header-logos img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* ======= CONTENEDOR PRINCIPAL ======= */
     .container {
-      background-color: var(--color-blanco);
-      padding: 30px 40px;
+      background-color: #fff;
+      padding: 40px;
       max-width: 1000px;
-      margin: 30px auto;
-      border-radius: var(--radio-borde);
-      box-shadow: var(--sombra-suave);
-      overflow-x: hidden;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    
+
     section {
       display: none;
       opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      position: relative;
-      padding-bottom: 20px;
+      transition: opacity 0.6s ease-in-out;
     }
-    
-    section.active { display: block; opacity: 1; }
-
-    h1, h2, h3, h4 {
-        color: var(--color-secundario);
-        margin-bottom: 1.2rem;
-        font-weight: 600;
-    }
-    h2 {
-      padding-bottom: 8px; border-bottom: 2px solid var(--color-primario);
-      margin-bottom: 1.5rem;
-    }
-    a { color: var(--color-primario); font-weight: 600; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    iframe, img, video {
-        max-width: 100%;
-        height: auto;
-    }
-    .imagen-seccion img {
-        display: block;
-        margin: 20px auto;
-        border-radius: var(--radio-borde);
-        box-shadow: var(--sombra-suave);
+    section.active {
+      display: block;
+      opacity: 1;
     }
 
+    /* ======= BOTONES ======= */
     .nav-buttons {
-      display: flex; justify-content: space-between;
-      max-width: 1000px; margin: -10px auto 30px; padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
     }
 
-    button, .final-button {
-      color: var(--color-blanco);
-      font-weight: 600; font-size: 16px; padding: 10px 25px;
-      cursor: pointer; border: none; border-radius: 50px;
-      transition: all 0.3s ease;
-    }
     button {
-      background-color: var(--color-primario);
-      box-shadow: 0 2px 8px rgba(0, 90, 156, 0.25);
+      background-color: #006599;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 12px 24px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
     }
     button:hover {
-      background-color: var(--color-secundario); transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 90, 156, 0.3);
+      background-color: #004d73;
     }
-    .final-button {
-      display: inline-block;
-      text-decoration: none;
-      background-color: #28a745;
-      box-shadow: 0 2px 8px rgba(40, 167, 69, 0.4);
+    button:focus {
+      outline: 3px solid #ff8c00;  /* acento naranja */
     }
-    .final-button:hover {
-      background-color: #218838;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.5);
-    }
-    
-    .img-superior-derecha {
-      position: absolute;
-      bottom: 20px;
-      right: 0px;
-      width: 160px;
-      opacity: 0.8;
-      pointer-events: none;
-    }
-    .img-superior-derecha img {
-      max-width: 100%;
-      height: auto;
+
+    /* ======= TITULOS Y TEXTOS ======= */
+    h1, h2 {
+      color: #005A9C;  /* azul más brillante */
     }
 
     ul { padding-left: 20px; }
+    a { color: #007BFF; }
 
+    /* ======= CARDS ======= */
     .card {
-      background: #fdfdfd; border: 1px solid #e9e9e9;
-      border-left: 4px solid var(--color-acento);
-      padding: 20px; margin-bottom: 15px;
-      border-radius: var(--radio-borde);
+      background: #eef5f9;
+      border-left: 4px solid #007BFF;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
     }
-    
+
+    /* ======= DETAILS ======= */
     details {
-      background-color: #f8fbff; border: 1px solid #dce8f4;
-      padding: 15px 20px; margin-bottom: 12px;
-      border-radius: var(--radio-borde); cursor: pointer;
+      background-color: #eef5f9;
+      border-left: 4px solid #007BFF;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      cursor: pointer;
     }
-    details summary { font-weight: 600; font-size: 1.05rem; color: var(--color-secundario); }
-
-    ul[style*="list-style: none"] { list-style: none; padding-left: 0; }
-    ul[style*="list-style: none"] li {
-        background-color: #f9f9f9; border: 1px solid #eee;
-        border-radius: 8px; margin-bottom: 8px;
+    details summary {
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
     }
-    ul[style*="list-style: none"] label {
-        display: flex; align-items: center;
-        padding: 12px; cursor: pointer;
-    }
-    ul[style*="list-style: none"] input[type="checkbox"] {
-        width: 1.4em; height: 1.4em;
-        margin-right: 12px; accent-color: var(--color-primario);
+    details[open] {
+      background-color: #ddeefc;
     }
 
-    .advertencia-checklist {
-        padding: 12px 15px; border-radius: var(--radio-borde);
-        margin-top: 20px; border-left: 5px solid;
-        display: flex; align-items: center; font-weight: 500;
-        background-color: var(--color-error-fondo);
-        border-color: var(--color-error-borde); color: #a5130b;
-    }
-    .advertencia-checklist::before {
-        content: '▲'; color: var(--color-error-borde);
-        font-size: 1.5em; margin-right: 10px; line-height: 1;
+    /* ======= BLOQUES CON ESTILO ======= */
+    .seccion-contenido {
+      background-color: #eef5f9;
+      border-left: 6px solid #007BFF;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
     }
 
+    .imagen-seccion {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .imagen-seccion img {
+      max-width: 100%;
+      height: auto;
+      max-height: 350px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .imagen-seccion img:hover {
+      transform: scale(1.02);
+    }
+
+    /* ======= GRID ======= */
+    .grid-dos-columnas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* ======= RESPONSIVO ======= */
     @media screen and (max-width: 768px) {
-      .container { padding: 20px; }
-      h2 { font-size: 1.4rem; }
-      .img-superior-derecha { display: none; }
-      .grid-dos-columnas, .comportamiento-grid, .vial-grid { grid-template-columns: 1fr !important; }
+      .grid-dos-columnas {
+        grid-template-columns: 1fr !important;
+      }
+      .card ul {
+        padding-left: 20px;
+        font-size: 15px;
+      }
+      .card li {
+        margin-bottom: 10px;
+      }
+      .card p {
+        font-size: 15px;
+      }
+      details {
+        padding: 8px 12px;
+      }
+      details p,
+      details ul {
+        font-size: 14px;
+      }
+      details summary {
+        font-size: 15px;
+      }
+      .vial-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+      }
     }
-    /* 1) Apagar el <img> flotante del casco */
-.img-superior-derecha { 
-  display: none !important;
-}
-
-/* 2) Marca de agua en las secciones (casco al fondo, responsivo) */
-section {
-  position: relative;
-  /* Ajusta aquí la URL del casco (PNG con transparencia) */
-  --casco-url: url("https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png");
-
-  background-image: var(--casco-url);
-  background-repeat: no-repeat;
-  background-position: right 16px bottom 16px;     /* esquina inferior derecha */
-  background-size: clamp(120px, 16vw, 180px);      /* tamaño responsivo */
-}
-
-/* 3) Intensidad/contraste de la marca de agua 
-   (no bloquea clics ni texto porque es fondo) */
-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  /* Halo sutil para separar el casco del fondo si es muy claro */
-  background: radial-gradient(180px 120px at calc(100% - 80px) calc(100% - 70px),
-              rgba(0, 90, 156, 0.10), transparent 65%);
-  z-index: 0;
-}
-
-/* 4) Ajuste global de opacidad perceptual del casco:
-   si lo ves muy presente, baja el alpha del halo (arriba) o usa este filtro tenue */
-section {
-  /* El filtro suaviza el contraste del logo sin afectar el contenido */
-  filter: saturate(0.95) opacity(0.92);
-}
-
-/* 5) En móviles lo ocultamos para no recargar visualmente */
-@media (max-width: 768px) {
-  section {
-    background-image: none;
-    filter: none;
-  }
-  section::after { background: none; }
-}
-
-/* 6) Si alguna sección necesita MÁS presencia del casco,
-   añade class="section--marca-fuerte" a ese <section> */
-.section--marca-fuerte {
-  filter: none; /* restaura contraste completo */
-}
-/* —————————————————————————————————
-   0) APAGAR EL CASCO FLOTANTE ANTIGUO
-   ————————————————————————————————— */
-.img-superior-derecha { 
-  display: none !important;
-}
-
-/* —————————————————————————————————
-   1) HEADER + LOGOS (PBI + CASCO)
-   ————————————————————————————————— */
-header {
-  background-color: var(--color-blanco);
-  color: var(--color-secundario);
-  padding: 12px 25px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-
-header strong {
-  font-size: 1.1rem;
-  line-height: 1.2;
-  white-space: nowrap;
-}
-
-/* Contenedor derecho con el logo PBI y el personaje con casco */
-.header-logos{
-  display: inline-flex;
-  align-items: flex-end;      /* alinea bases */
-  gap: 8px;
-  min-width: 120px;           /* evita saltos bruscos */
-}
-
-.logo-pbi{
-  max-height: 50px;
-  height: 50px;
-  width: auto;
-  display: block;
-}
-
-/* Personaje con casco en la esquina superior derecha */
-.logo-casco{
-  max-height: 60px;           /* un poquito más alto que el logo */
-  height: 60px;
-  width: auto;
-  display: block;
-  opacity: .95;               /* sutil */
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,.28))
-          drop-shadow(0 4px 10px rgba(0,0,0,.12));
-  image-rendering: -webkit-optimize-contrast;
-}
-
-/* —————————————————————————————————
-   2) RESPONSIVE
-   ————————————————————————————————— */
-@media (max-width: 992px){
-  .logo-pbi{ height: 44px; }
-  .logo-casco{ height: 52px; }
-}
-
-@media (max-width: 768px){
-  /* Oculta el casco para ganar espacio en móvil */
-  .logo-casco{ display: none; }
-  .logo-pbi{ height: 42px; }
-  header{ padding: 10px 18px; }
-}
-
-@media (max-width: 420px){
-  header strong{ font-size: 1rem; }
-}
-
   </style>
 </head>
 <body>
 
 <header>
   <div><strong>Inducción HSEQ visitantes PBI</strong></div>
-  <img src="https://i.postimg.cc/gcX7rNgd/Logo-PBI.png" alt="Logo PBI">
+  <div class="header-logos">
+    <img src="https://i.postimg.cc/gcX7rNgd/Logo-PBI.png" alt="Logo PBI">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con casco">
+  </div>
 </header>
+
 <div id="barraProgreso"></div>
 
 <div class="container">
