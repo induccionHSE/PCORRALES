@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inducción HSEQ – Planta Buenavista</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inducción HSEQ – planta Corrales</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    /* ----- VARIABLES DE COLOR Y FUENTE MODERNIZADAS ----- */
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ----- PALETA CORPORATIVA CONFIABLE ----- */
     :root {
-      --primary-blue: #005A9C;
-      --primary-blue-dark: #004B82;
-      --accent-blue: #1A73E8;
+      --primary-navy: #0D2240; /* Azul marino oscuro */
+      --primary-navy-light: #1A4480;
+      --accent-blue: #007BFF; /* Azul brillante para acciones */
       --text-dark: #212529;
-      --text-secondary: #6c757d;
-      --bg-light: #f8f9fa;
-      --bg-card: #e9ecef;
-      --border-color: #dee2e6;
-      --font-heading: 'Montserrat', sans-serif;
-      --font-body: 'Roboto', sans-serif;
+      --text-light: #6c757d;
+      --bg-light: #f4f7fa; /* Fondo con un ligero tinte azul */
+      --bg-card: #FFFFFF;
+      --border-color: #EAECEE;
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Lato', sans-serif;
     }
 
-    body {
-      font-family: var(--font-body);
-      line-height: 1.6;
-      background-color: var(--bg-light);
-      color: var(--text-dark);
-      margin: 0;
-      padding: 0;
-    }
+    body {
+      font-family: var(--font-body);
+      line-height: 1.7;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+    }
 
-    header {
-      background-color: var(--primary-blue);
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+    header {
+      background-color: var(--primary-navy);
+      color: white;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
     header img {
       max-height: 60px;
@@ -56,228 +56,182 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
 
-    .container {
-      background-color: #fff;
-      padding: 40px;
-      max-width: 1000px;
-      margin: 20px auto;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.07);
-    }
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      max-width: 1000px;
+      margin: 20px auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
 
-    section {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.6s ease-in-out;
-    }
+    section {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
 
-    section.active {
-      display: block;
-      opacity: 1;
-    }
+    section.active {
+      display: block;
+      opacity: 1;
+    }
 
-    .nav-buttons {
-      display: flex;
-      justify-content: space-between;
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
       margin: 0 auto 20px auto;
       max-width: 1000px;
       padding: 0 10px;
-    }
+    }
 
-    button {
-      background-color: var(--primary-blue);
+    button {
+      background-color: var(--primary-navy-light);
       color: white;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 16px;
       padding: 12px 24px;
       cursor: pointer;
       border: none;
-      border-radius: 5px;
+      border-radius: 50px; /* Botones redondeados */
       transition: background-color 0.3s ease;
-      font-family: var(--font-body);
+      font-family: var(--font-heading);
+      letter-spacing: 0.5px;
     }
 
     button:hover {
-      background-color: var(--primary-blue-dark);
+      background-color: var(--primary-navy);
     }
 
-    button:focus {
-      outline: 3px solid var(--accent-blue);
-      outline-offset: 2px;
-    }
-
-    h1, h2 {
-      color: var(--primary-blue-dark);
+    h1, h2 {
+      color: var(--primary-navy);
       font-family: var(--font-heading);
-    }
+      font-weight: 700;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 10px;
+    }
 
-    ul {
-      padding-left: 20px;
-    }
+    ul {
+      padding-left: 20px;
+    }
 
-    a {
-      color: var(--accent-blue);
-      font-weight: bold;
+    a {
+      color: var(--accent-blue);
+      font-weight: 700;
       text-decoration: none;
-    }
+    }
     a:hover {
       text-decoration: underline;
     }
 
-    img.qr {
-      width: 200px;
-      display: block;
-      margin: 20px auto;
+    img.qr {
+      width: 200px;
+      display: block;
+      margin: 20px auto;
       border-radius: 8px;
-    }
+    }
 
-    .card, details, .seccion-contenido {
-      background: var(--bg-card);
-      border-left: 5px solid var(--primary-blue);
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 0 8px 8px 0;
-    }
-    
-    .seccion-contenido {
-      padding: 30px;
-    }
+    .card, details, .seccion-contenido {
+      background: var(--bg-card);
+      border-left: 4px solid var(--accent-blue);
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 0 8px 8px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
 
-    details {
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+    details {
+      cursor: pointer;
+    }
 
-    details summary {
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-    }
+    details summary {
+      font-weight: 700;
+      font-family: var(--font-heading);
+      color: var(--primary-navy-light);
+    }
 
-    details[open] {
-      background-color: var(--border-color);
-    }
+    details[open] {
+      border-left-color: var(--primary-navy);
+    }
 
-    .imagen-seccion {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+    .imagen-seccion {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-    .imagen-seccion img {
-      max-width: 100%;
-      height: auto;
-      max-height: 350px;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
+   .imagen-seccion img {
+    max-width: 100%;
+    height: auto;
+    max-height: 350px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
 
-    .imagen-seccion img:hover {
-      transform: scale(1.02);
-    }
+  .imagen-seccion img:hover {
+    transform: scale(1.02);
+  }
 
-    .img-superior-derecha {
-      float: right;
-      margin-left: 20px;
-      margin-top: -10px;
-      margin-bottom: 10px;
-      max-width: 90px;
-      z-index: 1;
-    }
+  .img-superior-derecha {
+    float: right;
+    margin-left: 20px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    max-width: 90px;
+    z-index: 1;
+  }
 
-    .img-superior-derecha img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
+  .img-superior-derecha img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 
-    section.has-personaje {
-      padding-right: 120px;
-    }
+  .grid-dos-columnas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
 
-    .grid-dos-columnas {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    /* Barra de progreso */
-    #barraProgreso {
-        height: 6px;
-        background-color: var(--accent-blue);
-        width: 0%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 999;
-        transition: width 0.4s;
-    }
-
-    /* ----- RESPONSIVE DESIGN ----- */
-    @media screen and (max-width: 768px) {
-      .container {
+  /* Responsivo */
+  @media screen and (max-width: 768px) {
+    .container {
         padding: 20px;
-      }
-      .img-superior-derecha {
-        float: none;
-        display: block;
-        margin: 0 auto 20px auto;
-        text-align: center;
-      }
-      section.has-personaje {
-        padding-right: 0;
-      }
-      .grid-dos-columnas, .comportamiento-grid, .vial-grid {
-        grid-template-columns: 1fr !important;
-      }
-      .card ul {
-        padding-left: 20px;
-        font-size: 15px;
-      }
-      .card li {
-        margin-bottom: 10px;
-      }
-      .card p {
-        font-size: 15px;
-      }
-      details {
-        padding: 8px 12px;
-      }
-      details p, details ul {
-        font-size: 14px;
-      }
-      details ul {
-        padding-left: 18px;
-      }
-      details summary {
-        font-size: 15px;
-      }
     }
-  </style>
+    .img-superior-derecha {
+      float: none;
+      display: block;
+      margin: 0 auto 20px auto;
+      text-align: center;
+    }
+    .grid-dos-columnas, .comportamiento-grid, .vial-grid {
+        grid-template-columns: 1fr !important;
+    }
+  }
+  </style>
 </head>
 <body>
 <header>
-  <div><strong>Inducción HSEQ visitantes PBI</strong></div>
-  <img src="https://i.postimg.cc/gcX7rNgd/Logo-PBI.png" alt="Logo PBI">
+  <div><strong>Inducción HSEQ visitantes PBI</strong></div>
+  <img src="https://i.postimg.cc/gcX7rNgd/Logo-PBI.png" alt="Logo PBI">
 </header>
-<div id="barraProgreso"></div>
+<div id="barraProgreso" style="height: 6px; background-color: var(--accent-blue); width: 0%; position: fixed; top: 0; left: 0; z-index: 999; transition: width 0.4s;"></div>
 
 <div class="container">
-  <section class="active">
-    <div class="seccion-contenido">
-      <p style="font-size: 16px; margin-top: 15px;">
-        Esta inducción está diseñada para brindarte la información clave que necesitas para actuar de forma <strong>segura</strong>, <strong>responsable</strong> y en coherencia con nuestra <strong>cultura HSEQ</strong>.
-      </p>
-      <p style="font-size: 16px;">
-        📌 La inducción es <strong>obligatoria</strong>. Su aprobación es requisito previo para cualquier ingreso o actividad dentro de nuestras instalaciones.
-      </p>
-      <p style="font-size: 16px; color: var(--primary-blue-dark); font-weight: bold; text-align: center; margin-top: 25px;">
-        ¡Gracias por sumarte a un entorno más seguro, eficiente y sostenible! 🌱
-      </p>
-    </div>
-</section>
+  <section class="active">
+    <div class="seccion-contenido">
+      <p style="color: var(--text-light); margin-top: 15px; font-size: 1.1em;">
+      Esta inducción está diseñada para brindarte la información clave que necesitas para actuar de forma <strong style="color: var(--text-dark);">segura</strong>, <strong style="color: var(--text-dark);">responsable</strong> y en coherencia con nuestra <strong style="color: var(--text-dark);">cultura HSEQ</strong>.
+      </p>
+      <p style="color: var(--text-light); font-size: 1.1em;">
+      📌 La inducción es <strong style="color: var(--text-dark);">obligatoria</strong>. Su aprobación es requisito previo para cualquier ingreso o actividad dentro de nuestras instalaciones.
+      </p>
+      <p style="font-size: 1.1em; color: var(--primary-navy-light); font-weight: bold; text-align: center; margin-top: 25px;">
+      ¡Gracias por sumarte a un entorno más seguro, eficiente y sostenible! 🌱
+      </p>
+    </div>
+  </section>
 <section>
   <div class="img-superior-derecha">
     <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
@@ -286,7 +240,7 @@
   <h2>2. OBJETIVO DE LA INDUCCIÓN</h2>
 
     <div style="text-align: center; margin-top: 20px;">
-    <p style="font-size: 16px; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">
+    <p style="font-size: 16px; color: var(--text-light); max-width: 800px; margin: 0 auto;">
       Te invitamos a ver el siguiente video introductorio que refuerza el propósito de esta inducción, 
       resaltando nuestro compromiso con la Seguridad, la Salud, el Ambiente y la Calidad en todos los proyectos.
     </p>
@@ -300,7 +254,7 @@
     <img src="https://i.postimg.cc/fbbfvL1G/FOTO-1.jpg" alt="Descripción de la imagen">
   </div>
 
-    <p>
+    <p style="color: var(--text-light);">
     Brindar a todo visitante o contratista las herramientas y conocimientos esenciales en materia de Seguridad, 
     Salud, Ambiente y Calidad (HSEQ), garantizando la integridad de las personas, el entorno y la continuidad operativa.
   </p>
@@ -312,27 +266,27 @@
   </div>
 
   <h2>3. POLÍTICAS CORPORATIVAS</h2>
-  <p>Estas son las políticas esenciales que rigen nuestro actuar diario en PBI:</p>
+  <p style="color: var(--text-light);">Estas son las políticas esenciales que rigen nuestro actuar diario en PBI:</p>
 
   <details>
     <summary>📌 Política Integral HSEQ</summary>
-    <p>Establece nuestro compromiso con la protección de la vida, la salud, el ambiente y la calidad en todos los procesos. Promueve la mejora continua, la prevención de incidentes y el cumplimiento de la normatividad aplicable. 👉 
+    <p style="color: var(--text-light);">Establece nuestro compromiso con la protección de la vida, la salud, el ambiente y la calidad en todos los procesos. Promueve la mejora continua, la prevención de incidentes y el cumplimiento de la normatividad aplicable. 👉 
     <a href="https://drive.google.com/open?id=1To8ksi0_bzYq_hzyExQr8FiCRMw2FOy4" target="_blank">Ver PDF</a></p>
   </details>
 
   <details>
     <summary>🚫 Política de prevención SPA</summary>
-    <p>Fomenta ambientes seguros y saludables mediante acciones de promoción, prevención y acompañamiento, orientadas a reducir los riesgos asociados al uso de sustancias psicoactivas en contextos laborales. 👉 
+    <p style="color: var(--text-light);">Fomenta ambientes seguros y saludables mediante acciones de promoción, prevención y acompañamiento, orientadas a reducir los riesgos asociados al uso de sustancias psicoactivas en contextos laborales. 👉 
     <a href="https://drive.google.com/open?id=19_eRtxWZ1DvwmY0pnxqImaBqKB7KbdRr" target="_blank">Ver PDF</a></p>
   </details>
 
   <details>
     <summary>🚗 Política de seguridad vial</summary>
-    <p>Promueve una cultura de movilidad segura dentro y fuera de nuestras instalaciones, mediante la prevención de accidentes, el respeto a las normas de tránsito y la concientización sobre comportamientos responsables. 👉 
+    <p style="color: var(--text-light);">Promueve una cultura de movilidad segura dentro y fuera de nuestras instalaciones, mediante la prevención de accidentes, el respeto a las normas de tránsito y la concientización sobre comportamientos responsables. 👉 
     <a href="https://drive.google.com/open?id=1NAmg1SaRJ_Rzt3DeqWVO9znXfWT3OZOA" target="_blank">Ver PDF</a></p>
   </details>
 
-  <p>📌 Es tu responsabilidad conocerlas y aplicarlas en todo momento durante tu permanencia en nuestras instalaciones.</p>
+  <p style="color: var(--text-light);">📌 Es tu responsabilidad conocerlas y aplicarlas en todo momento durante tu permanencia en nuestras instalaciones.</p>
 </section>
   <section>
   <div class="img-superior-derecha">
@@ -340,57 +294,57 @@
   </div>
 
   <h2>4. PELIGROS Y RIESGOS EN CAMPO</h2>
-  <p>Durante tu visita podrías estar expuesto a varios peligros. A continuación, te mostramos los más representativos, junto con una medida clave que debes seguir para prevenir incidentes:</p>
+  <p style="color: var(--text-light);">Durante tu visita podrías estar expuesto a varios peligros. A continuación, te mostramos los más representativos, junto con una medida clave que debes seguir para prevenir incidentes:</p>
 
   <details>
     <summary>⚡ Riesgo eléctrico</summary>
-    <p>Tableros y equipos energizados representan peligro de electrocución o arco eléctrico.</p>
-    <p><strong>✅ Medida preventiva:</strong> No toques ni te acerques a equipos eléctricos sin autorización expresa del área técnica.</p>
+    <p style="color: var(--text-light);">Tableros y equipos energizados representan peligro de electrocución o arco eléctrico.</p>
+    <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">✅ Medida preventiva:</strong> No toques ni te acerques a equipos eléctricos sin autorización expresa del área técnica.</p>
   </details>
 
   <details>
     <summary>🧪 Riesgos químicos</summary>
-    <p>Exposición a combustibles, lubricantes, ácidos u otros productos que pueden causar quemaduras, intoxicación o reacciones.</p>
-    <p><strong>✅ Medida preventiva:</strong> Usa siempre el EPP correspondiente (botas, gafas, guantes, protección respiratoria) y no manipules sustancias químicas.</p>
+    <p style="color: var(--text-light);">Exposición a combustibles, lubricantes, ácidos u otros productos que pueden causar quemaduras, intoxicación o reacciones.</p>
+    <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">✅ Medida preventiva:</strong> Usa siempre el EPP correspondiente (botas, gafas, guantes, protección respiratoria) y no manipules sustancias químicas.</p>
   </details>
 
   <details>
     <summary>⚙️ Riesgos mecánicos</summary>
-    <p>Equipos rotativos, poleas, fajas y herramientas en operación pueden generar atrapamientos o golpes.</p>
-    <p><strong>✅ Medida preventiva:</strong> Mantente fuera del alcance de equipos en movimiento y respeta las zonas demarcadas.</p>
+    <p style="color: var(--text-light);">Equipos rotativos, poleas, fajas y herramientas en operación pueden generar atrapamientos o golpes.</p>
+    <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">✅ Medida preventiva:</strong> Mantente fuera del alcance de equipos en movimiento y respeta las zonas demarcadas.</p>
   </details>
 
   <details>
     <summary>🦠 Riesgos biológicos</summary>
-    <p>Presencia de vectores como mosquitos, zancudos o insectos en zonas cálidas, que pueden transmitir enfermedades.</p>
-    <p><strong>✅ Medida preventiva:</strong> Usa ropa que cubra la piel, aplica repelente autorizado y evita zonas con vegetación densa o aguas estancadas.</p>
+    <p style="color: var(--text-light);">Presencia de vectores como mosquitos, zancudos o insectos en zonas cálidas, que pueden transmitir enfermedades.</p>
+    <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">✅ Medida preventiva:</strong> Usa ropa que cubra la piel, aplica repelente autorizado y evita zonas con vegetación densa o aguas estancadas.</p>
   </details>
 
   <details>
     <summary>🔥 Áreas clasificadas</summary>
-    <p>Zonas con presencia de gases o vapores inflamables. Riesgo de explosión o incendio.</p>
-    <p><strong>✅ Medida preventiva:</strong> No ingreses a áreas señalizadas como peligrosas sin compañía ni autorización.</p>
+    <p style="color: var(--text-light);">Zonas con presencia de gases o vapores inflamables. Riesgo de explosión o incendio.</p>
+    <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">✅ Medida preventiva:</strong> No ingreses a áreas señalizadas como peligrosas sin compañía ni autorización.</p>
   </details>
 
   <details>
     <summary>🐍 Riesgo ofídico</summary>
-    <p>Presencia de serpientes en zonas rurales, áreas verdes o rocosas.</p>
-    <p><strong>✅ Medida preventiva:</strong> Usa calzado adecuado, camina solo por rutas autorizadas y reporta cualquier avistamiento.</p>
+    <p style="color: var(--text-light);">Presencia de serpientes en zonas rurales, áreas verdes o rocosas.</p>
+    <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">✅ Medida preventiva:</strong> Usa calzado adecuado, camina solo por rutas autorizadas y reporta cualquier avistamiento.</p>
   </details>
 
   <details>
     <summary>🌡️ Altas temperaturas y presiones</summary>
-    <p>Contactos con equipos calientes o presurizados pueden causar quemaduras o accidentes por liberación de energía.</p>
-    <p><strong>✅ Medida preventiva:</strong> No toques válvulas, tuberías ni superficies metálicas; mantén distancia segura.</p>
+    <p style="color: var(--text-light);">Contactos con equipos calientes o presurizados pueden causar quemaduras o accidentes por liberación de energía.</p>
+    <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">✅ Medida preventiva:</strong> No toques válvulas, tuberías ni superficies metálicas; mantén distancia segura.</p>
   </details>
 
   <details>
     <summary>⛈️ Tormentas eléctricas</summary>
-    <p>Riesgo de descargas eléctricas si se está al aire libre durante tormentas.</p>
-    <p><strong>✅ Medida preventiva:</strong> Suspende cualquier actividad a cielo abierto y refúgiate en zonas cubiertas y seguras.</p>
+    <p style="color: var(--text-light);">Riesgo de descargas eléctricas si se está al aire libre durante tormentas.</p>
+    <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">✅ Medida preventiva:</strong> Suspende cualquier actividad a cielo abierto y refúgiate en zonas cubiertas y seguras.</p>
   </details>
 
-  <p>📌 Además, pueden existir otros riesgos propios de la operación que serán comunicados durante tu ingreso. Sigue siempre las instrucciones del personal responsable o del área HSEQ.</p>
+  <p style="color: var(--text-light);">📌 Además, pueden existir otros riesgos propios de la operación que serán comunicados durante tu ingreso. Sigue siempre las instrucciones del personal responsable o del área HSEQ.</p>
 </section>
 <section>
  <div class="img-superior-derecha">
@@ -399,48 +353,48 @@
 
   <h2>🚛 Riesgos en el cargue de GLP, gasolina natural y gas en GTM</h2>
 
-  <p>En la Planta Buenavista se realizan operaciones críticas de cargue de:</p>
-  <ul>
+  <p style="color: var(--text-light);">En la planta Corrales se realizan operaciones críticas de cargue de:</p>
+  <ul style="color: var(--text-light);">
     <li><strong>GLP y gasolina natural:</strong> en camiones cisterna.</li>
     <li><strong>Gas natural comprimido (GNC):</strong> en unidades modulares tipo GTM.</li>
   </ul>
-  <p>Estas actividades requieren protocolos estrictos de seguridad y supervisión permanente por parte del personal de PBI.</p>
+  <p style="color: var(--text-light);">Estas actividades requieren protocolos estrictos de seguridad y supervisión permanente por parte del personal de PBI.</p>
 
   <div class="comportamiento-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
 
     <div class="card">
       <h4>🛢 Vapores inflamables</h4>
-      <p>Riesgo de incendio o explosión por acumulación de gases inflamables. Evitar toda fuente de ignición.</p>
+      <p style="color: var(--text-light);">Riesgo de incendio o explosión por acumulación de gases inflamables. Evitar toda fuente de ignición.</p>
     </div>
 
     <div class="card">
       <h4>⚡ Conexión a tierra</h4>
-      <p>Obligatoria antes de iniciar el cargue, para cualquier tipo de unidad (cisterna o GTM).</p>
+      <p style="color: var(--text-light);">Obligatoria antes de iniciar el cargue, para cualquier tipo de unidad (cisterna o GTM).</p>
     </div>
 
     <div class="card">
       <h4>📵 Prohibición de elementos no seguros</h4>
-      <p>Celulares, radios o herramientas no certificadas están prohibidas en la zona de cargue.</p>
+      <p style="color: var(--text-light);">Celulares, radios o herramientas no certificadas están prohibidas en la zona de cargue.</p>
     </div>
 
     <div class="card">
       <h4>🛠 Condición técnica del vehículo</h4>
-      <p>Mangueras, válvulas, válvulas de alivio, manómetros, extintores y certificados deben estar al día y en buen estado.</p>
+      <p style="color: var(--text-light);">Mangueras, válvulas, válvulas de alivio, manómetros, extintores y certificados deben estar al día y en buen estado.</p>
     </div>
 
     <div class="card">
       <h4>📋 Permiso de trabajo obligatorio</h4>
-      <p>Todo cargue requiere autorización previa, ATS diligenciado y validación de condiciones en campo.</p>
+      <p style="color: var(--text-light);">Todo cargue requiere autorización previa, ATS diligenciado y validación de condiciones en campo.</p>
     </div>
 
     <div class="card">
       <h4>👷 Supervisión </h4>
-      <p>Un representante de PBI acompaña el proceso. Puede suspender la operación si identifica desviaciones.</p>
+      <p style="color: var(--text-light);">Un representante de PBI acompaña el proceso. Puede suspender la operación si identifica desviaciones.</p>
     </div>
 
   </div>
 
-  <p style="font-size: 14px; color: var(--text-secondary); margin-top: 20px;">⚠️ <strong>Zona crítica y demarcada:</strong> No transites ni permanezcas cerca si no estás autorizado o vinculado directamente a la operación.</p>
+  <p style="font-size: 14px; color: var(--text-light); margin-top: 20px;">⚠️ <strong>Zona crítica y demarcada:</strong> No transites ni permanezcas cerca si no estás autorizado o vinculado directamente a la operación.</p>
 </section>
 
 <section>
@@ -563,18 +517,18 @@
 
   <h2>6. PERMISOS DE TRABAJO Y ATS</h2>
 
-  <p>📝 En la Planta Buenavista todo trabajo no rutinario debe contar con autorización previa mediante un <strong>Permiso de Trabajo</strong> y la elaboración de un <strong>Análisis de Trabajo Seguro (ATS)</strong>.</p>
+  <p style="color: var(--text-light);">📝 En la planta Corrales todo trabajo no rutinario debe contar con autorización previa mediante un <strong>Permiso de Trabajo</strong> y la elaboración de un <strong>Análisis de Trabajo Seguro (ATS)</strong>.</p>
 
   <div class="card">
-    <ul>
-      <li><strong>Permiso de trabajo:</strong> Documento obligatorio que establece las condiciones seguras antes de iniciar tareas con riesgo.</li>
-      <li><strong>ATS:</strong> Proceso en el que se identifican los peligros asociados a la actividad, se analizan los riesgos y se definen controles específicos.</li>
+    <ul style="color: var(--text-light);">
+      <li><strong style="color: var(--text-dark);">Permiso de trabajo:</strong> Documento obligatorio que establece las condiciones seguras antes de iniciar tareas con riesgo.</li>
+      <li><strong style="color: var(--text-dark);">ATS:</strong> Proceso en el que se identifican los peligros asociados a la actividad, se analizan los riesgos y se definen controles específicos.</li>
       <li>Debe ser diligenciado y firmado por el responsable del área, el ejecutante del trabajo y validado por HSEQ si aplica.</li>
       <li>Incluye revisión de EPP, herramientas, entorno, autorizaciones, condiciones de clima y estado de equipos.</li>
     </ul>
   </div>
 
-  <p>📌 Todo visitante que desarrolle actividades deberá contar con el permiso correspondiente, incluso si se trata de acompañamiento u observación técnica.</p>
+  <p style="color: var(--text-light);">📌 Todo visitante que desarrolle actividades deberá contar con el permiso correspondiente, incluso si se trata de acompañamiento u observación técnica.</p>
 </section>
 
 <section>
@@ -584,13 +538,13 @@
 
   <h2>📋 Sistema de permisos para contratistas y rol del contratante</h2>
 
-  <p>El sistema de permisos de trabajo es obligatorio para cualquier tarea que implique riesgos en la Planta Buenavista. Como contratista, deberás gestionar el permiso conforme al procedimiento <strong>INS-HSEQ-01</strong> y bajo la supervisión directa del equipo de PBI.</p>
+  <p style="color: var(--text-light);">El sistema de permisos de trabajo es obligatorio para cualquier tarea que implique riesgos en la planta Corrales. Como contratista, deberás gestionar el permiso conforme al procedimiento <strong>INS-HSEQ-01</strong> y bajo la supervisión directa del equipo de PBI.</p>
 
   <div class="comportamiento-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
     <div class="card">
       <h4>📄 Elabora el permiso en tu papelería</h4>
-      <p>Debes diligenciar el permiso usando tu propio formato, incluyendo:</p>
-      <ul>
+      <p style="color: var(--text-light);">Debes diligenciar el permiso usando tu propio formato, incluyendo:</p>
+      <ul style="color: var(--text-light);">
         <li>Tipo de permiso requerido (frío, caliente, eléctrico).</li>
         <li>AST / Evaluación de riesgos específica.</li>
         <li>Listas de chequeo, certificados y anexos técnicos.</li>
@@ -599,8 +553,8 @@
 
     <div class="card">
       <h4>🔁 Línea lógica para gestionar el permiso</h4>
-      <p>Sigue esta secuencia:</p>
-      <ul>
+      <p style="color: var(--text-light);">Sigue esta secuencia:</p>
+      <ul style="color: var(--text-light);">
         <li>Solicitud formal por parte del AE (líder técnico del contratista).</li>
         <li>Validación en campo con el supervisor de planta (AAL) (supervisor designado por PBI).</li>
         <li>Aprobación final por parte del cliente (AA) (Autoridad de área).</li>
@@ -610,8 +564,8 @@
 
     <div class="card">
       <h4>⚠️ Durante el trabajo</h4>
-      <p>Es obligatorio cumplir con:</p>
-      <ul>
+      <p style="color: var(--text-light);">Es obligatorio cumplir con:</p>
+      <ul style="color: var(--text-light);">
         <li>Charlas de inicio lideradas por el cliente.</li>
         <li>Controles y medidas del permiso siempre vigentes.</li>
         <li>Revalidaciones por turno o ante cambios.</li>
@@ -621,7 +575,7 @@
 
     <div class="card">
       <h4>📌 Responsabilidades del contratista</h4>
-      <ul>
+      <ul style="color: var(--text-light);">
         <li>Personal capacitado y con inducción vigente.</li>
         <li>Gestión oportuna del permiso antes del inicio.</li>
         <li>Cumplimiento estricto del procedimiento INS-HSEQ-01.</li>
@@ -631,12 +585,12 @@
   </div>
 
   <h3 style="margin-top: 40px;">🧑‍💼 Nosotros como contratante: tu autoridad en el proceso</h3>
-  <p>Como empresa contratante, lideramos y controlamos todo el sistema de permisos de trabajo. Nuestra responsabilidad es garantizar que ningún trabajo inicie sin validación previa y sin condiciones seguras verificadas.</p>
+  <p style="color: var(--text-light);">Como empresa contratante, lideramos y controlamos todo el sistema de permisos de trabajo. Nuestra responsabilidad es garantizar que ningún trabajo inicie sin validación previa y sin condiciones seguras verificadas.</p>
 
   <div class="comportamiento-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
     <div class="card">
       <h4>✅ Antes de autorizar</h4>
-      <ul>
+      <ul style="color: var(--text-light);">
         <li>Revisamos a detalle tu permiso, AST y anexos.</li>
         <li>Validamos campo y condiciones operativas.</li>
         <li>Firmamos el permiso como Autoridad de Área (AA).</li>
@@ -645,7 +599,7 @@
 
     <div class="card">
       <h4>🔍 Durante la ejecución</h4>
-      <ul>
+      <ul style="color: var(--text-light);">
         <li>Supervisamos el cumplimiento del permiso en sitio.</li>
         <li>Participamos en revalidaciones y charlas.</li>
         <li>Podemos detener cualquier actividad si hay riesgo.</li>
@@ -654,7 +608,7 @@
 
     <div class="card">
       <h4>📦 Al cierre del permiso</h4>
-      <ul>
+      <ul style="color: var(--text-light);">
         <li>Validamos el levantamiento de aislamientos.</li>
         <li>Inspeccionamos que el sitio quede seguro y limpio.</li>
         <li>Firmamos el cierre y aseguramos su archivo.</li>
@@ -662,7 +616,7 @@
     </div>
   </div>
 
-  <p style="margin-top: 20px; font-size: 14px; color: var(--text-secondary);">📚 Consulta siempre el procedimiento <strong>INS-HSEQ-01</strong> y coordina con el equipo HSEQ de PBI dantes de ejecutar cualquier tarea.</p>
+  <p style="margin-top: 20px; font-size: 14px; color: var(--text-light);">📚 Consulta siempre el procedimiento <strong>INS-HSEQ-01</strong> y coordina con el equipo HSEQ de PBI dantes de ejecutar cualquier tarea.</p>
 </section>
 
 <section>
@@ -672,71 +626,71 @@
 
   <h2>7. TAREAS DE ALTO RIESGO</h2>
 
-  <p>Estas tareas se consideran críticas por su potencial de causar incidentes graves o fatales si no se gestionan con controles adecuados. Los siguientes son <strong>requisitos iniciales mínimos</strong>; sin embargo, pueden exigirse controles adicionales según la evaluación específica de riesgos, el procedimiento interno o condiciones del lugar de trabajo.</p>
+  <p style="color: var(--text-light);">Estas tareas se consideran críticas por su potencial de causar incidentes graves o fatales si no se gestionan con controles adecuados. Los siguientes son <strong>requisitos iniciales mínimos</strong>; sin embargo, pueden exigirse controles adicionales según la evaluación específica de riesgos, el procedimiento interno o condiciones del lugar de trabajo.</p>
 
-  <p><strong>Marco normativo de referencia:</strong> Decreto 1072 de 2015, Resolución 0312 de 2019, y normativas específicas según el tipo de tarea.</p>
+  <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">Marco normativo de referencia:</strong> Decreto 1072 de 2015, Resolución 0312 de 2019, y normativas específicas según el tipo de tarea.</p>
 
   <details>
     <summary>🧗‍♂️ Trabajo en alturas</summary>
-    <p>Requiere autorización formal y cumplimiento riguroso de estándares técnicos. Aplica para tareas realizadas desde 2 metros o más sobre el nivel inferior.</p>
-    <ul>
+    <p style="color: var(--text-light);">Requiere autorización formal y cumplimiento riguroso de estándares técnicos. Aplica para tareas realizadas desde 2 metros o más sobre el nivel inferior.</p>
+    <ul style="color: var(--text-light);">
       <li>Curso vigente de trabajo en alturas, según el rol desempeñado.</li>
       <li>Uso de arnés certificado, líneas de vida y sistemas anticaídas.</li>
       <li>Permiso de trabajo diligenciado y firmado.</li>
       <li>Inspección del área, equipos y puntos de anclaje.</li>
     </ul>
-    <p><strong>Normativa:</strong> Resolución 4272 de 2021, NTC 1735, Decreto 1072 de 2015.</p>
+    <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">Normativa:</strong> Resolución 4272 de 2021, NTC 1735, Decreto 1072 de 2015.</p>
   </details>
 
   <details>
     <summary>🚧 Espacios confinados</summary>
-    <p>Aplica para tanques, ductos, cámaras u otras estructuras cerradas con acceso limitado. Se deben cumplir protocolos estrictos antes del ingreso.</p>
-    <ul>
+    <p style="color: var(--text-light);">Aplica para tanques, ductos, cámaras u otras estructuras cerradas con acceso limitado. Se deben cumplir protocolos estrictos antes del ingreso.</p>
+    <ul style="color: var(--text-light);">
       <li>Evaluación previa y autorización por personal competente.</li>
       <li>Medición de gases, ventilación mecánica y monitoreo continuo.</li>
       <li>Plan de rescate activo y vigilancia externa permanente.</li>
       <li>Permiso específico y señalización del área de trabajo.</li>
     </ul>
-    <p><strong>Normativa:</strong> Resolución 0491 de 2020, Guía Técnica GTC 220, Decreto 1072 de 2015.</p>
+    <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">Normativa:</strong> Resolución 0491 de 2020, Guía Técnica GTC 220, Decreto 1072 de 2015.</p>
   </details>
 
   <details>
     <summary>🔥 Trabajos en caliente</summary>
-    <p>Incluye actividades que generan calor, chispas o llama abierta (soldadura, corte, esmerilado, etc.).</p>
-    <ul>
+    <p style="color: var(--text-light);">Incluye actividades que generan calor, chispas o llama abierta (soldadura, corte, esmerilado, etc.).</p>
+    <ul style="color: var(--text-light);">
       <li>Permiso de trabajo autorizado y análisis de atmósferas si aplica.</li>
       <li>Presencia de extintores y materiales de control contra incendios.</li>
       <li>Eliminación de materiales inflamables cercanos.</li>
       <li>Vigilancia durante y después de la actividad.</li>
     </ul>
-    <p><strong>Normativa:</strong> NFPA 51B, Decreto 1072 de 2015.</p>
+    <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">Normativa:</strong> NFPA 51B, Decreto 1072 de 2015.</p>
   </details>
 
   <details>
     <summary>🏗️ Izaje de cargas</summary>
-    <p>Requiere planeación técnica y supervisión. Aplica para uso de grúas, polipastos, plumas o maniobras de elevación.</p>
-    <ul>
+    <p style="color: var(--text-light);">Requiere planeación técnica y supervisión. Aplica para uso de grúas, polipastos, plumas o maniobras de elevación.</p>
+    <ul style="color: var(--text-light);">
       <li>Inspección técnica de eslingas, ganchos y accesorios.</li>
       <li>Evaluación del entorno y capacidad del equipo de izaje.</li>
       <li>Presencia de señalero certificado con línea visual directa.</li>
       <li>Zona demarcada y sin personal bajo la carga.</li>
     </ul>
-    <p><strong>Normativa:</strong> NTC 2769, ISO 23813, Decreto 1072 de 2015.</p>
+    <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">Normativa:</strong> NTC 2769, ISO 23813, Decreto 1072 de 2015.</p>
   </details>
 
   <details>
     <summary>⚠️ Energías peligrosas (LOTO)</summary>
-    <p>Contempla tareas que implican contacto con fuentes de energía eléctrica, mecánica, hidráulica, neumática u otras.</p>
-    <ul>
+    <p style="color: var(--text-light);">Contempla tareas que implican contacto con fuentes de energía eléctrica, mecánica, hidráulica, neumática u otras.</p>
+    <ul style="color: var(--text-light);">
       <li>Identificación previa de todas las fuentes energizadas.</li>
       <li>Aplicación efectiva del sistema LOTO (bloqueo y etiquetado).</li>
       <li>Verificación de aislamiento completo antes de intervenir.</li>
       <li>Capacitación específica y autorización del personal.</li>
     </ul>
-    <p><strong>Normativa:</strong> OSHA 1910.147, GTC 45, Decreto 1072 de 2015.</p>
+    <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">Normativa:</strong> OSHA 1910.147, GTC 45, Decreto 1072 de 2015.</p>
   </details>
 
-  <p>📌 También se consideran tareas de alto riesgo: excavaciones profundas, demolición estructural, perforación mecánica, ingreso a zonas clasificadas, entre otras. Siempre consulta el procedimiento interno y coordina con el área HSEQ.</p>
+  <p style="color: var(--text-light);">📌 También se consideran tareas de alto riesgo: excavaciones profundas, demolición estructural, perforación mecánica, ingreso a zonas clasificadas, entre otras. Siempre consulta el procedimiento interno y coordina con el área HSEQ.</p>
 </section>
 <section>
   <div class="img-superior-derecha">
@@ -745,19 +699,19 @@
 
    <h2>8. GESTIÓN AMBIENTAL</h2>
 
- <p>🌱 En PBI adoptamos principios de sostenibilidad en todas las actividades. Estas son nuestras reglas ambientales básicas:</p>
-<ul>
-  <li><span style="display:inline-block;width:14px;height:14px;background:#ffffff;border:1px solid #999;border-radius:50%;margin-right:8px;vertical-align:middle;"></span> Deposita los residuos <strong>aprovechables</strong> (papel, cartón, plástico, vidrio, metales) en el contenedor <strong>blanco</strong>.</li>
+ <p style="color: var(--text-light);">🌱 En PBI adoptamos principios de sostenibilidad en todas las actividades. Estas son nuestras reglas ambientales básicas:</p>
+<ul style="color: var(--text-light);">
+  <li><span style="display:inline-block;width:14px;height:14px;background:#ffffff;border:1px solid #999;border-radius:50%;margin-right:8px;vertical-align:middle;"></span> Deposita los residuos <strong style="color: var(--text-dark);">aprovechables</strong> (papel, cartón, plástico, vidrio, metales) en el contenedor <strong style="color: var(--text-dark);">blanco</strong>.</li>
   
-  <li><span style="display:inline-block;width:14px;height:14px;background:#28a745;border-radius:50%;margin-right:8px;vertical-align:middle;"></span> Los residuos <strong>orgánicos</strong> (restos de comida, cáscaras, residuos de jardinería) deben ir en el contenedor <strong>verde</strong>.</li>
+  <li><span style="display:inline-block;width:14px;height:14px;background:#28a745;border-radius:50%;margin-right:8px;vertical-align:middle;"></span> Los residuos <strong style="color: var(--text-dark);">orgánicos</strong> (restos de comida, cáscaras, residuos de jardinería) deben ir en el contenedor <strong style="color: var(--text-dark);">verde</strong>.</li>
   
-  <li><span style="display:inline-block;width:14px;height:14px;background:#000000;border-radius:50%;margin-right:8px;vertical-align:middle;"></span> Los residuos <strong>no aprovechables</strong> (papel higiénico, servilletas, icopor, residuos contaminados) van en el contenedor <strong>negro</strong>.</li>
+  <li><span style="display:inline-block;width:14px;height:14px;background:#000000;border-radius:50%;margin-right:8px;vertical-align:middle;"></span> Los residuos <strong style="color: var(--text-dark);">no aprovechables</strong> (papel higiénico, servilletas, icopor, residuos contaminados) van en el contenedor <strong style="color: var(--text-dark);">negro</strong>.</li>
 </ul>
-<p>🚨 No mezcles residuos y usa correctamente los puntos ecológicos asignados.</p>
-<p>🔁 Recuerda: cada acción cuenta para proteger nuestro entorno y cumplir con la <strong>Resolución 2184 de 2019</strong>.</p>
+<p style="color: var(--text-light);">🚨 No mezcles residuos y usa correctamente los puntos ecológicos asignados.</p>
+<p style="color: var(--text-light);">🔁 Recuerda: cada acción cuenta para proteger nuestro entorno y cumplir con la <strong style="color: var(--text-dark);">Resolución 2184 de 2019</strong>.</p>
 
 
-  <p style="margin-top: 20px;">♻️ <strong>Cada acción cuenta.</strong> La gestión adecuada de residuos contribuye directamente a la sostenibilidad y cumplimiento ambiental.</p>
+  <p style="margin-top: 20px; color: var(--text-light);">♻️ <strong style="color: var(--text-dark);">Cada acción cuenta.</strong> La gestión adecuada de residuos contribuye directamente a la sostenibilidad y cumplimiento ambiental.</p>
 </section>
 <section>
   <div class="img-superior-derecha">
@@ -766,18 +720,18 @@
 
   <h2>9. PLAN DE EMERGENCIAS</h2>
 
-  <p>La planta cuenta con un sistema de emergencias que garantiza la respuesta oportuna ante cualquier evento:</p>
+  <p style="color: var(--text-light);">La planta cuenta con un sistema de emergencias que garantiza la respuesta oportuna ante cualquier evento:</p>
 
-  <ul>
+  <ul style="color: var(--text-light);">
     <li>📢 Alarma sonora, sistema de aviso y activación rápida.</li>
     <li>🚩 Señalización y rutas de evacuación visibles.</li>
     <li>🧯 Brigadistas capacitados y asignados por turno.</li>
     <li>📍 Punto de encuentro por zona claramente identificado.</li>
   </ul>
 
-  <p>📌 En caso de emergencia:</p>
+  <p style="color: var(--text-light);">📌 En caso de emergencia:</p>
 
-  <ul>
+  <ul style="color: var(--text-light);">
     <li>✅ Mantén la calma.</li>
     <li>✅ Sigue instrucciones del brigadista.</li>
     <li>✅ Desplázate al punto de encuentro asignado.</li>
@@ -789,15 +743,15 @@
     </div>
   <h2>🧯 Tipos de Extintores que podrías encontrar en la planta</h2>
 
-  <p>Durante tu visita, podrías enfrentar situaciones donde se requiere actuar rápidamente. Conocer los tipos de extintores disponibles es clave para tu seguridad y la de todos.</p>
-  <p><strong>Recuerda:</strong> Nunca uses un extintor sin estar seguro del tipo de fuego que enfrentas. Si no estás entrenado o si dudas, busca a un brigadista.</p>
+  <p style="color: var(--text-light);">Durante tu visita, podrías enfrentar situaciones donde se requiere actuar rápidamente. Conocer los tipos de extintores disponibles es clave para tu seguridad y la de todos.</p>
+  <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">Recuerda:</strong> Nunca uses un extintor sin estar seguro del tipo de fuego que enfrentas. Si no estás entrenado o si dudas, busca a un brigadista.</p>
 
   <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
 
         <div style="flex: 1 1 280px; background: #fff9e6; border-left: 6px solid #f9c922; border-radius: 10px; padding: 15px; max-width: 300px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
       <h4>🟡 Extintor ABC</h4>
-      <p><strong>Clase:</strong> A, B y C</p>
-      <ul style="padding-left: 20px;">
+      <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">Clase:</strong> A, B y C</p>
+      <ul style="padding-left: 20px; color: var(--text-light);">
         <li><span style="color: green;">✔</span> Papel, madera, aceites, electricidad.</li>
         <li><span style="color: green;">✔</span> Muy versátil.</li>
         <li><span style="color: red;">❌</span> No usar en espacios sin ventilación.</li>
@@ -808,8 +762,8 @@
 
         <div style="flex: 1 1 280px; background: #ffeaea; border-left: 6px solid #e60000; border-radius: 10px; padding: 15px; max-width: 300px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
       <h4>🔴 Extintor CO₂</h4>
-      <p><strong>Clase:</strong> C</p>
-      <ul style="padding-left: 20px;">
+      <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">Clase:</strong> C</p>
+      <ul style="padding-left: 20px; color: var(--text-light);">
         <li><span style="color: green;">✔</span> Equipos eléctricos y tableros.</li>
         <li><span style="color: green;">✔</span> No deja residuos.</li>
         <li><span style="color: red;">❌</span> No usar sin ventilación.</li>
@@ -820,8 +774,8 @@
 
         <div style="flex: 1 1 280px; background: #e9fef0; border-left: 6px solid #27ae60; border-radius: 10px; padding: 15px; max-width: 300px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
       <h4>🟢 Extintor de Agua</h4>
-      <p><strong>Clase:</strong> A</p>
-      <ul style="padding-left: 20px;">
+      <p style="color: var(--text-light);"><strong style="color: var(--text-dark);">Clase:</strong> A</p>
+      <ul style="padding-left: 20px; color: var(--text-light);">
         <li><span style="color: green;">✔</span> Combustibles sólidos (madera, cartón, tela).</li>
         <li><span style="color: red;">❌</span> Nunca en fuegos eléctricos o líquidos inflamables.</li>
         <li><span style="color: green;">✔</span> Enfría el material.</li>
@@ -832,7 +786,7 @@
 
   </div>
 
-  <p style="margin-top: 20px; font-size: 14px; color: var(--text-secondary);">📌 Si ves un extintor, obsérvalo: cada uno tiene una etiqueta que indica su clase. No todos sirven para todos los fuegos. Ante duda, llama al brigadista más cercano.</p>
+  <p style="margin-top: 20px; font-size: 14px; color: var(--text-light);">📌 Si ves un extintor, obsérvalo: cada uno tiene una etiqueta que indica su clase. No todos sirven para todos los fuegos. Ante duda, llama al brigadista más cercano.</p>
 </section>
  <section>
   <div class="img-superior-derecha">
@@ -841,11 +795,11 @@
 
   <h2>10. TARJETAS DE APORTE</h2>
 
-  <p>Las tarjetas de aporte son el medio oficial para reportar observaciones sobre seguridad, ambiente o calidad dentro de nuestras instalaciones. Son anónimas, rápidas y fáciles de diligenciar.</p>
+  <p style="color: var(--text-light);">Las tarjetas de aporte son el medio oficial para reportar observaciones sobre seguridad, ambiente o calidad dentro de nuestras instalaciones. Son anónimas, rápidas y fáciles de diligenciar.</p>
 
-  <p>🚀 ¿Qué puedes reportar?</p>
+  <p style="color: var(--text-light);">🚀 ¿Qué puedes reportar?</p>
 
-  <ul>
+  <ul style="color: var(--text-light);">
     <li>Condiciones o actos inseguros</li>
     <li>Incidentes ambientales o riesgos operativos</li>
     <li>Ideas de mejora o buenas prácticas</li>
@@ -853,7 +807,7 @@
 
   <img class="qr" src="https://i.postimg.cc/0Nhp4dDd/Captura-de-pantalla-2025-06-17-093430.png" alt="QR formulario tarjetas">
 
-  <p style="text-align:center; font-weight:bold;">
+  <p style="text-align:center; font-weight:bold; color: var(--text-dark);">
     Participar es cuidar de ti y de tu equipo. 💬 ¡Gracias por ser parte activa de nuestra cultura HSEQ!
   </p>
 </section>
@@ -864,43 +818,43 @@
 
   <h2>11. NORMAS DE COMPORTAMIENTO ESPERADO</h2>
 
-  <p>Durante tu visita a la Planta Buenavista, se espera que mantengas un comportamiento seguro, respetuoso y coherente con nuestra cultura. Las siguientes normas son obligatorias:</p>
+  <p style="color: var(--text-light);">Durante tu visita a la planta Corrales, se espera que mantengas un comportamiento seguro, respetuoso y coherente con nuestra cultura. Las siguientes normas son obligatorias:</p>
 
   <div class="comportamiento-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
 
     <div class="card">
       <h4>🤝 Respeto y cortesía</h4>
-      <p>Dirígete con amabilidad al personal y sigue siempre las indicaciones del personal autorizado.</p>
+      <p style="color: var(--text-light);">Dirígete con amabilidad al personal y sigue siempre las indicaciones del personal autorizado.</p>
     </div>
 
     <div class="card">
       <h4>🚫 Cero distracciones</h4>
-      <p>No uses celulares mientras te desplazas por zonas operativas o técnicas.</p>
+      <p style="color: var(--text-light);">No uses celulares mientras te desplazas por zonas operativas o técnicas.</p>
     </div>
 
     <div class="card">
       <h4>📸 Fotografías restringidas</h4>
-      <p>No tomes fotos o grabes videos sin autorización expresa del personal responsable.</p>
+      <p style="color: var(--text-light);">No tomes fotos o grabes videos sin autorización expresa del personal responsable.</p>
     </div>
 
     <div class="card">
       <h4>🛑 No manipules equipos</h4>
-      <p>Está prohibido tocar maquinaria, válvulas, botones o cualquier componente operativo.</p>
+      <p style="color: var(--text-light);">Está prohibido tocar maquinaria, válvulas, botones o cualquier componente operativo.</p>
     </div>
 
     <div class="card">
       <h4>📍 Respeta las zonas autorizadas</h4>
-      <p>No te desvíes de las rutas señalizadas. Mantente siempre dentro de las áreas permitidas.</p>
+      <p style="color: var(--text-light);">No te desvíes de las rutas señalizadas. Mantente siempre dentro de las áreas permitidas.</p>
     </div>
 
     <div class="card">
       <h4>💬 Reporta cualquier anomalía</h4>
-      <p>Si detectas una condición insegura, repórtala de inmediato a HSEQ o al personal en campo.</p>
+      <p style="color: var(--text-light);">Si detectas una condición insegura, repórtala de inmediato a HSEQ o al personal en campo.</p>
     </div>
 
   </div>
 
-  <p style="margin-top: 20px;">📌 El incumplimiento de estas normas puede conllevar la suspensión del acceso o la cancelación de tu visita.</p>
+  <p style="margin-top: 20px; color: var(--text-light);">📌 El incumplimiento de estas normas puede conllevar la suspensión del acceso o la cancelación de tu visita.</p>
 </section>
 <section>
   <div class="img-superior-derecha">
@@ -909,33 +863,33 @@
 
   <h2>12. SEGURIDAD VIAL</h2>
 
-  <p>🚘 La seguridad vial es parte de nuestra cultura preventiva. Cada acción cuenta para proteger la vida propia y la de los demás. Sigue estas normas mientras estés en nuestras instalaciones o en tránsito hacia ellas:</p>
+  <p style="color: var(--text-light);">🚘 La seguridad vial es parte de nuestra cultura preventiva. Cada acción cuenta para proteger la vida propia y la de los demás. Sigue estas normas mientras estés en nuestras instalaciones o en tránsito hacia ellas:</p>
 
   <div class="vial-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
 
     <div class="card">
       <h4>📵 Sin distracciones</h4>
-      <p>No uses el celular mientras conduces ni durante desplazamientos a pie en zonas operativas.</p>
+      <p style="color: var(--text-light);">No uses el celular mientras conduces ni durante desplazamientos a pie en zonas operativas.</p>
     </div>
 
     <div class="card">
       <h4>⏱ Respeta los límites</h4>
-      <p>La velocidad máxima permitida es de <strong>10 km/h</strong> dentro de la planta. Ajusta tu velocidad a las condiciones del entorno.</p>
+      <p style="color: var(--text-light);">La velocidad máxima permitida es de <strong style="color: var(--text-dark);">10 km/h</strong> dentro de la planta. Ajusta tu velocidad a las condiciones del entorno.</p>
     </div>
 
     <div class="card">
       <h4>✅ Cinturón siempre</h4>
-      <p>Usa el cinturón de seguridad en todo momento, incluso para recorridos cortos dentro de la instalación.</p>
+      <p style="color: var(--text-light);">Usa el cinturón de seguridad en todo momento, incluso para recorridos cortos dentro de la instalación.</p>
     </div>
 
     <div class="card">
       <h4>🔁 Prioriza la vida</h4>
-      <p>Conduce de forma defensiva, cede el paso a peatones, y mantente alerta ante maniobras de vehículos pesados.</p>
+      <p style="color: var(--text-light);">Conduce de forma defensiva, cede el paso a peatones, y mantente alerta ante maniobras de vehículos pesados.</p>
     </div>
 
   </div>
 
-  <p style="margin-top: 20px;">📌 Recuerda: La seguridad vial empieza con tu actitud. Tu responsabilidad en la vía también protege a tus compañeros.</p>
+  <p style="margin-top: 20px; color: var(--text-light);">📌 Recuerda: La seguridad vial empieza con tu actitud. Tu responsabilidad en la vía también protege a tus compañeros.</p>
 </section>
 <section>
   <div class="img-superior-derecha">
@@ -943,9 +897,9 @@
   </div>
 
   <h2>🧾 13. RECOMENDACIONES FINALES ANTES DE INGRESAR</h2>
-  <p>Antes de iniciar tu visita, asegúrate de cumplir con los siguientes puntos:</p>
+  <p style="color: var(--text-light);">Antes de iniciar tu visita, asegúrate de cumplir con los siguientes puntos:</p>
 
-  <ul style="list-style: none; padding-left: 0;">
+  <ul style="list-style: none; padding-left: 0; color: var(--text-light);">
     <li><label><input type="checkbox" name="confirmacion[]" /> ✅ Recibiste la charla de inducción completa.</label></li>
     <li><label><input type="checkbox" name="confirmacion[]" /> ✅ Usas el EPP completo requerido para el área a visitar.</label></li>
     <li><label><input type="checkbox" name="confirmacion[]" /> ✅ Conoces los puntos de encuentro y rutas de evacuación.</label></li>
@@ -955,7 +909,7 @@
     <li><label><input type="checkbox" name="confirmacion[]" /> ✅ Tienes el Permiso de Trabajo o autorización, si aplica.</label></li>
   </ul>
 
-  <p style="margin-top: 20px;"><strong>📌 Recuerda:</strong> Tu seguridad y la de todos depende de tu actitud y cumplimiento. ¡Gracias por contribuir a un entorno seguro! 🙌</p>
+  <p style="margin-top: 20px; color: var(--text-light);"><strong style="color: var(--text-dark);">📌 Recuerda:</strong> Tu seguridad y la de todos depende de tu actitud y cumplimiento. ¡Gracias por contribuir a un entorno seguro! 🙌</p>
 </section>
 
   <section>
@@ -964,13 +918,13 @@
   </div>    
   <h2>14. CIERRE Y CULTURA CORPORATIVA</h2>
 
-  <p>🎯 Gracias por completar esta inducción. Tu responsabilidad, coherencia y actitud hacen la diferencia. ¡Cuidémonos entre todos!</p>
+  <p style="color: var(--text-light);">🎯 Gracias por completar esta inducción. Tu responsabilidad, coherencia y actitud hacen la diferencia. ¡Cuidémonos entre todos!</p>
 
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+  <div class="grid-dos-columnas" style="margin-top: 20px;">
 
     <div class="card">
       <h4>🎥 Conoce más sobre nuestra cultura de seguridad</h4>
-      <p>Te invitamos a ver este video que refuerza los principios de seguridad industrial que promovemos en PBI.</p>
+      <p style="color: var(--text-light);">Te invitamos a ver este video que refuerza los principios de seguridad industrial que promovemos en PBI.</p>
       <p style="text-align: center;">
         <a href="https://youtu.be/faHop1FcGNE" target="_blank">🔗 Ver video de seguridad industrial</a>
       </p>
@@ -978,7 +932,7 @@
 
     <div class="card">
       <h4>🏢 Conoce quiénes somos</h4>
-      <p>Descubre más sobre nuestra empresa, nuestra operación y el compromiso con la excelencia.</p>
+      <p style="color: var(--text-light);">Descubre más sobre nuestra empresa, nuestra operación y el compromiso con la excelencia.</p>
       <p style="text-align: center;">
         <a href="https://youtu.be/-gRjlWdwpao" target="_blank">🔗 Ver video corporativo de PBI</a>
       </p>
@@ -986,16 +940,17 @@
 
   </div>
 
-  <p style="margin-top: 30px;"><strong>👉 Da clic en el siguiente botón para presentar tu evaluación:</strong></p>
+  <p style="margin-top: 30px; color: var(--text-light);"><strong style="color: var(--text-dark);">👉 Da clic en el siguiente botón para presentar tu evaluación:</strong></p>
 
   <p style="text-align:center;">
     <a class="final-button" href="https://forms.gle/EyWhXDjiGFX3iasB6" target="_blank"
-       style="display:inline-block; padding: 12px 24px; background-color:#198754; color:white; font-weight:bold; border-radius:6px; text-decoration:none; box-shadow:0 2px 5px rgba(0,0,0,0.2); transition: background-color 0.3s ease;">
+       style="display:inline-block; padding: 12px 24px; background-color:#28a745; color:white; font-weight:bold; border-radius:6px; text-decoration:none; box-shadow:0 2px 5px rgba(0,0,0,0.2); transition: background-color 0.3s ease;">
        ✅ Presentar evaluación
     </a>
   </p>
 </section>
-</div> <div class="nav-buttons">
+</div> 
+<div class="nav-buttons">
   <button id="btnAnterior" onclick="prevSection()">Anterior</button>
   <button id="btnSiguiente" onclick="nextSection()">Siguiente</button>
 </div>
