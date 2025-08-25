@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inducción HSEQ – planta Corrales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- Variables y Estilos Globales --- */
+    :root {
+      --color-primario: #005A9C;
+      --color-secundario: #003D6B;
+      --color-acento: #FF8C00;
+      --color-exito: #28a745;
+      --color-texto: #333;
+      --color-fondo: #f4f7f9;
+      --color-blanco: #ffffff;
+      --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.08);
+      --radio-borde: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
+      overflow-x: hidden;
+    }
+
+    /* --- Barra de Progreso --- */
+    #barraProgreso {
+      height: 6px;
+      background: linear-gradient(90deg, var(--color-primario), var(--color-acento));
+      width: 0%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      transition: width 0.5s ease-in-out;
+      border-radius: 0 5px 5px 0;
+    }
+
+    /* --- Header --- */
+    header {
+      background: linear-gradient(135deg, var(--color-secundario), var(--color-primario));
+      color: var(--color-blanco);
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header strong {
+        font-size: 1.2rem;
+    }
+
+    header img {
+      max-height: 55px;
+      background-color: var(--color-blanco);
+      padding: 5px;
+      border-radius: var(--radio-borde);
+      box-shadow: var(--sombra-suave);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.08) rotate(2deg);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* --- Contenedor Principal --- */
+    .container {
+      background-color: var(--color-blanco);
+      padding: 40px;
+      max-width: 1000px;
+      margin: 40px auto;
+      border-radius: var(--radio-borde);
+      box-shadow: var(--sombra-suave);
+      position: relative;
+    }
+
+    /* --- Secciones y Animaciones --- */
+    section {
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    section.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .img-superior-derecha {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      width: 90px;
+      opacity: 0.5;
+    }
+    .img-superior-derecha img {
+        width: 100%;
+    }
+
+
+    /* --- Tipografía y Contenido --- */
+    h1, h2, h3, h4 {
+      color: var(--color-secundario);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    h2 {
+      border-bottom: 3px solid var(--color-primario);
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+    }
+
+    a {
+      color: var(--color-primario);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: var(--color-acento);
+      text-decoration: underline;
+    }
+    
+    ul {
+        padding-left: 25px;
+    }
+
+    ul li::marker {
+        color: var(--color-primario);
+        font-weight: bold;
+    }
+    
+    img.qr {
+      width: 180px;
+      display: block;
+      margin: 20px auto;
+      border: 5px solid var(--color-blanco);
+      border-radius: var(--radio-borde);
+      box-shadow: var(--sombra-suave);
+    }
+
+    /* --- Botones de Navegación --- */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px 40px 40px;
+      max-width: 1000px;
+      margin: -20px auto 0;
+    }
+
+    button {
+      background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+      color: var(--color-blanco);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 12px 28px;
+      cursor: pointer;
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 4px 10px rgba(0, 90, 156, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 90, 156, 0.4);
+    }
+    
+    button:active {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 8px rgba(0, 90, 156, 0.3);
+    }
+
+    button:focus {
+      outline: 3px solid var(--color-acento);
+      outline-offset: 3px;
+    }
+    
+    .final-button {
+      display: inline-block;
+      padding: 15px 35px;
+      background: linear-gradient(135deg, var(--color-exito), #218838);
+      color: var(--color-blanco);
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .final-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(40, 167, 69, 0.5);
+      text-decoration: none;
+      color: var(--color-blanco);
+    }
+
+
+    /* --- Componentes Personalizados --- */
+
+    /* Cards */
+    .card {
+      background: var(--color-blanco);
+      border: 1px solid #e0e0e0;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: var(--radio-borde);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--sombra-suave);
+    }
+
+    .card h4 {
+        color: var(--color-primario);
+        margin-bottom: 0.5rem;
+    }
+
+    /* Desplegables (Accordions) */
+    details {
+      background-color: #f8fbff;
+      border: 1px solid #dce8f4;
+      padding: 15px 20px;
+      margin-bottom: 12px;
+      border-radius: var(--radio-borde);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    details:hover {
+        border-color: var(--color-primario);
+        box-shadow: 0 2px 8px rgba(0, 90, 156, 0.1);
+    }
+
+    details[open] {
+      background-color: var(--color-blanco);
+      border-color: var(--color-primario);
+    }
+
+    details summary {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--color-secundario);
+      list-style: none; /* Oculta la flecha por defecto */
+      position: relative;
+      padding-right: 25px;
+    }
+    
+    details summary::after { /* Crea una flecha personalizada */
+        content: '▼';
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%) rotate(0deg);
+        transition: transform 0.3s ease;
+        font-size: 0.8em;
+        color: var(--color-primario);
+    }
+    
+    details[open] summary::after {
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+    details p, details ul {
+        margin-top: 15px;
+    }
+
+    /* Grids para Layout */
+    .grid-dos-columnas, .comportamiento-grid, .vial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    
+    /* Checklist Final */
+    .checklist ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    .checklist li {
+        margin-bottom: 12px;
+    }
+    .checklist label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    .checklist input[type="checkbox"] {
+        margin-right: 12px;
+        width: 1.3em;
+        height: 1.3em;
+        accent-color: var(--color-primario);
+    }
+
+    /* --- Responsividad --- */
+    @media screen and (max-width: 768px) {
+      body {
+        font-size: 15px;
+      }
+      .container {
+        padding: 20px;
+        margin: 20px;
+      }
+      header {
+          padding: 15px;
+          flex-direction: column;
+          gap: 10px;
+      }
+      .img-superior-derecha {
+          display: none; /* Ocultar en móvil para más espacio */
+      }
+      .grid-dos-columnas, .comportamiento-grid, .vial-grid {
+        grid-template-columns: 1fr;
+      }
+      h2 {
+          font-size: 1.5rem;
+      }
+      .nav-buttons {
+          padding: 0 20px 20px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div><strong>Inducción HSEQ visitantes PBI</strong></div>
+  <img src="https://i.postimg.cc/gcX7rNgd/Logo-PBI.png" alt="Logo PBI">
+</header>
+
+<div id="barraProgreso"></div>
+
+<div class="container">
+
+  <section class="active">
+    <div class="img-superior-derecha">
+        <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+    </div>
+    <h2>1. BIENVENIDA</h2>
+    <p>Esta inducción está diseñada para brindarte la información clave que necesitas para actuar de forma <strong>segura</strong>, <strong>responsable</strong> y en coherencia con nuestra <strong>cultura HSEQ</strong>.</p>
+    <p>📌 La inducción es <strong>obligatoria</strong>. Su aprobación es requisito previo para cualquier ingreso o actividad dentro de nuestras instalaciones.</p>
+    <p style="font-size: 1.1rem; color: var(--color-primario); font-weight: bold; text-align: center; margin-top: 25px;">
+        ¡Gracias por sumarte a un entorno más seguro, eficiente y sostenible! 🌱
+    </p>
+  </section>
+
+  <section>
+    <div class="img-superior-derecha">
+        <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+    </div>
+    <h2>2. OBJETIVO DE LA INDUCCIÓN</h2>
+    <p>Te invitamos a ver el siguiente video introductorio que refuerza el propósito de esta inducción, resaltando nuestro compromiso con la Seguridad, la Salud, el Ambiente y la Calidad en todos los proyectos.</p>
+    <div style="position:relative; width:100%; height:0; padding-bottom:56.25%; margin: 20px 0;">
+        <iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/uq5idk?" width="100%" style="border-radius: var(--radio-borde); border: none; width:100%; height:100%; position:absolute; left:0; top:0; overflow:hidden; box-shadow: var(--sombra-suave);"></iframe>
+    </div>
+    <p><strong>Objetivo:</strong> Brindar a todo visitante o contratista las herramientas y conocimientos esenciales en materia de Seguridad, Salud, Ambiente y Calidad (HSEQ), garantizando la integridad de las personas, el entorno y la continuidad operativa.</p>
+  </section>
+
+  <section>
+    <div class="img-superior-derecha">
+        <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+    </div>
+    <h2>3. POLÍTICAS CORPORATIVAS</h2>
+    <p>Estas son las políticas esenciales que rigen nuestro actuar diario en PBI:</p>
+    <details>
+      <summary>📌 Política Integral HSEQ</summary>
+      <p>Establece nuestro compromiso con la protección de la vida, la salud, el ambiente y la calidad en todos los procesos. 👉 <a href="https://drive.google.com/open?id=1To8ksi0_bzYq_hzyExQr8FiCRMw2FOy4" target="_blank">Ver PDF</a></p>
+    </details>
+    <details>
+      <summary>🚫 Política de prevención SPA</summary>
+      <p>Fomenta ambientes seguros y saludables, orientadas a reducir los riesgos asociados al uso de sustancias psicoactivas. 👉 <a href="https://drive.google.com/open?id=19_eRtxWZ1DvwmY0pnxqImaBqKB7KbdRr" target="_blank">Ver PDF</a></p>
+    </details>
+    <details>
+      <summary>🚗 Política de seguridad vial</summary>
+      <p>Promueve una cultura de movilidad segura mediante la prevención de accidentes y comportamientos responsables. 👉 <a href="https://drive.google.com/open?id=1NAmg1SaRJ_Rzt3DeqWVO9znXfWT3OZOA" target="_blank">Ver PDF</a></p>
+    </details>
+    <p style="margin-top: 20px;">📌 Es tu responsabilidad conocerlas y aplicarlas en todo momento.</p>
+  </section>
+  
+  <section>
+    <div class="img-superior-derecha">
+      <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+    </div>
+    <h2>4. PELIGROS Y RIESGOS EN CAMPO</h2>
+    <p>Durante tu visita podrías estar expuesto a varios peligros. Estos son los más comunes:</p>
+    <details>
+      <summary>⚡ Riesgo eléctrico</summary>
+      <p><strong>✅ Medida preventiva:</strong> No toques ni te acerques a equipos eléctricos sin autorización expresa del área técnica.</p>
+    </details>
+    <details>
+      <summary>🧪 Riesgos químicos</summary>
+      <p><strong>✅ Medida preventiva:</strong> Usa siempre el EPP correspondiente y no manipules sustancias químicas.</p>
+    </details>
+    <details>
+      <summary>⚙️ Riesgos mecánicos</summary>
+      <p><strong>✅ Medida preventiva:</strong> Mantente fuera del alcance de equipos en movimiento y respeta las zonas demarcadas.</p>
+    </details>
+    <details>
+      <summary>🦠 Riesgos biológicos</summary>
+      <p><strong>✅ Medida preventiva:</strong> Usa ropa que cubra la piel, aplica repelente autorizado y evita zonas con vegetación densa.</p>
+    </details>
+    <details>
+      <summary>🐍 Riesgo ofídico</summary>
+      <p><strong>✅ Medida preventiva:</strong> Usa calzado adecuado, camina solo por rutas autorizadas y reporta cualquier avistamiento.</p>
+    </details>
+    <details>
+      <summary>⛈️ Tormentas eléctricas</summary>
+      <p><strong>✅ Medida preventiva:</strong> Suspende cualquier actividad a cielo abierto y refúgiate en zonas cubiertas y seguras.</p>
+    </details>
+    <p style="margin-top: 20px;">📌 Sigue siempre las instrucciones del personal responsable o del área HSEQ.</p>
+  </section>
+
+    <section>
+        <div class="img-superior-derecha">
+            <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+        </div>
+        <h2>5. REGLAS DE ORO</h2>
+        <div class="grid-dos-columnas">
+            <div class="card"><h4>1️⃣ Antes de empezar, revisa y planifica</h4></div>
+            <div class="card"><h4>2️⃣ Aísla bien las energías peligrosas</h4></div>
+            <div class="card"><h4>3️⃣ Cuidado con trabajos en caliente</h4></div>
+            <div class="card"><h4>4️⃣ Con cargas, no te la juegues</h4></div>
+            <div class="card"><h4>5️⃣ Protégete al trabajar en altura</h4></div>
+            <div class="card"><h4>6️⃣ Conduce con responsabilidad</h4></div>
+            <div class="card"><h4>7️⃣ Usa siempre tu EPP</h4></div>
+            <div class="card"><h4>8️⃣ Maneja sustancias peligrosas</h4></div>
+            <div class="card"><h4>9️⃣ No toques equipos eléctricos sin permiso</h4></div>
+            <div class="card"><h4>🔟 Si no es seguro, detente</h4></div>
+        </div>
+    </section>
+
+    <section>
+        <div class="img-superior-derecha">
+            <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+        </div>
+        <h2>6. PERMISOS DE TRABAJO Y ATS</h2>
+        <p>📝 Todo trabajo no rutinario en planta debe contar con un <strong>Permiso de Trabajo</strong> y un <strong>Análisis de Trabajo Seguro (ATS)</strong>.</p>
+        <div class="card">
+            <ul>
+                <li><strong>Permiso de trabajo:</strong> Documento que autoriza y establece condiciones seguras para tareas de riesgo.</li>
+                <li><strong>ATS:</strong> Herramienta para identificar peligros, analizar riesgos y definir controles específicos.</li>
+                <li>Ambos deben ser diligenciados, firmados y validados antes de iniciar cualquier actividad.</li>
+            </ul>
+        </div>
+        <p>📌 Todo visitante que desarrolle actividades deberá contar con el permiso correspondiente.</p>
+    </section>
+    
+    <section>
+        <div class="img-superior-derecha">
+            <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+        </div>
+        <h2>7. TAREAS DE ALTO RIESGO</h2>
+        <p>Estas tareas requieren controles estrictos y autorización formal debido a su alto potencial de causar incidentes graves.</p>
+        <details>
+            <summary>🧗‍♂️ Trabajo en alturas</summary>
+            <p>Requiere curso vigente, uso de arnés certificado, permiso de trabajo y supervisión constante.</p>
+        </details>
+        <details>
+            <summary>🚧 Espacios confinados</summary>
+            <p>Necesita medición de gases, ventilación, plan de rescate y un vigilante externo permanente.</p>
+        </details>
+        <details>
+            <summary>🔥 Trabajos en caliente</summary>
+            <p>Implica tener un permiso, extintores disponibles y un área libre de materiales combustibles.</p>
+        </details>
+        <details>
+            <summary>🏗️ Izaje de cargas</summary>
+            <p>Se debe inspeccionar el equipo, demarcar la zona y contar con un señalero certificado.</p>
+        </details>
+        <details>
+            <summary>⚠️ Energías peligrosas (LOTO)</summary>
+            <p>Exige la aplicación del sistema de bloqueo y etiquetado (LOTO) para aislar todas las fuentes de energía.</p>
+        </details>
+    </section>
+
+    <section>
+        <div class="img-superior-derecha">
+            <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+        </div>
+        <h2>8. GESTIÓN AMBIENTAL</h2>
+        <p>🌱 En PBI promovemos la sostenibilidad. Ayúdanos a clasificar correctamente los residuos:</p>
+        <div class="grid-dos-columnas">
+            <div class="card">
+                <h4>⚪ Contenedor Blanco</h4>
+                <p><strong>Aprovechables:</strong> Plástico, cartón, vidrio, papel y metales.</p>
+            </div>
+            <div class="card">
+                <h4>⚫ Contenedor Negro</h4>
+                <p><strong>No Aprovechables:</strong> Papel higiénico, servilletas, icopor, residuos contaminados.</p>
+            </div>
+            <div class="card">
+                <h4>🟢 Contenedor Verde</h4>
+                <p><strong>Orgánicos:</strong> Restos de comida y desechos agrícolas.</p>
+            </div>
+        </div>
+        <p style="margin-top: 20px;">♻️ <strong>Cada acción cuenta.</strong> La gestión adecuada de residuos es clave para proteger nuestro entorno.</p>
+    </section>
+
+    <section>
+        <div class="img-superior-derecha">
+            <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+        </div>
+        <h2>9. PLAN DE EMERGENCIAS</h2>
+        <p>La planta cuenta con un sistema de emergencias que garantiza una respuesta oportuna.</p>
+        <div class="card">
+            <h4>📌 En caso de emergencia:</h4>
+            <ul>
+                <li>✅ <strong>Mantén la calma</strong> y no corras.</li>
+                <li>✅ Sigue las <strong>instrucciones del brigadista</strong> o líder de evacuación.</li>
+                <li>✅ Desplázate por la <strong>ruta de evacuación</strong> señalizada.</li>
+                <li>✅ Dirígete al <strong>punto de encuentro</strong> asignado y espera instrucciones.</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section>
+        <div class="img-superior-derecha">
+            <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+        </div>
+        <h2>10. TARJETAS DE APORTE</h2>
+        <p>Las tarjetas de aporte son nuestro medio para reportar observaciones de seguridad, ambiente o calidad. ¡Tu participación es clave!</p>
+        <p>🚀 <strong>¿Qué puedes reportar?</strong></p>
+        <ul>
+            <li>Condiciones o actos inseguros.</li>
+            <li>Incidentes ambientales o riesgos operativos.</li>
+            <li>Ideas de mejora o buenas prácticas.</li>
+        </ul>
+        <img class="qr" src="https://i.postimg.cc/0Nhp4dDd/Captura-de-pantalla-2025-06-17-093430.png" alt="QR formulario tarjetas">
+        <p style="text-align:center; font-weight:bold;">💬 Participar es cuidar de ti y de tu equipo. ¡Gracias por ser parte activa de nuestra cultura HSEQ!</p>
+    </section>
+    
+    <section>
+        <div class="img-superior-derecha">
+            <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+        </div>
+        <h2>11. NORMAS DE COMPORTAMIENTO</h2>
+        <p>Durante tu visita, es obligatorio mantener un comportamiento seguro y respetuoso.</p>
+        <div class="comportamiento-grid">
+            <div class="card"><h4>🤝 Respeto y cortesía</h4><p>Dirígete con amabilidad al personal y sigue sus indicaciones.</p></div>
+            <div class="card"><h4>🚫 Cero distracciones</h4><p>No uses celulares mientras caminas por zonas operativas.</p></div>
+            <div class="card"><h4>📸 Fotos restringidas</h4><p>No tomes fotos o videos sin autorización expresa.</p></div>
+            <div class="card"><h4>🛑 No manipules equipos</h4><p>Está prohibido tocar maquinaria, válvulas o cualquier componente.</p></div>
+        </div>
+    </section>
+
+    <section>
+        <div class="img-superior-derecha">
+            <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+        </div>
+        <h2>12. SEGURIDAD VIAL</h2>
+        <p>🚘 La seguridad vial es parte fundamental de nuestra cultura preventiva.</p>
+        <div class="vial-grid">
+            <div class="card"><h4>📵 Sin distracciones</h4><p>No uses el celular mientras conduces.</p></div>
+            <div class="card"><h4>⏱ Respeta los límites</h4><p>La velocidad máxima en planta es de <strong>10 km/h</strong>.</p></div>
+            <div class="card"><h4>✅ Cinturón siempre</h4><p>Usa el cinturón de seguridad en todo momento.</p></div>
+            <div class="card"><h4>🔁 Prioriza la vida</h4><p>Conduce a la defensiva y cede el paso a peatones.</p></div>
+        </div>
+    </section>
+
+    <section>
+        <div class="img-superior-derecha">
+            <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+        </div>
+        <h2>13. RECOMENDACIONES FINALES</h2>
+        <p>Antes de ingresar, asegúrate de cumplir con los siguientes puntos:</p>
+        <div class="checklist">
+            <ul>
+                <li><label><input type="checkbox" name="confirmacion[]" /> He recibido y entendido la inducción completa.</label></li>
+                <li><label><input type="checkbox" name="confirmacion[]" /> Uso el EPP completo requerido para el área.</label></li>
+                <li><label><input type="checkbox" name="confirmacion[]" /> Conozco los puntos de encuentro y rutas de evacuación.</label></li>
+                <li><label><input type="checkbox" name="confirmacion[]" /> Entiendo las restricciones de las tareas de alto riesgo.</label></li>
+                <li><label><input type="checkbox" name="confirmacion[]" /> Cumpliré con las normas de comportamiento y seguridad vial.</label></li>
+                <li><label><input type="checkbox" name="confirmacion[]" /> Tengo mi autorización o Permiso de Trabajo, si aplica.</label></li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <div class="img-superior-derecha">
+            <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+        </div>
+        <h2>14. CIERRE Y EVALUACIÓN</h2>
+        <p>🎯 ¡Gracias por completar esta inducción! Tu compromiso con la seguridad hace la diferencia. Ahora, es momento de validar tus conocimientos.</p>
+        <p style="margin-top: 30px; text-align: center;"><strong>👉 Da clic en el siguiente botón para presentar tu evaluación:</strong></p>
+        <p style="text-align:center; margin-top: 20px;">
+            <a class="final-button" href="https://forms.gle/EyWhXDjiGFX3iasB6" target="_blank">✅ Presentar Evaluación</a>
+        </p>
+    </section>
+
+</div>
+
+<div class="nav-buttons">
+    <button id="btnAnterior" onclick="prevSection()">Anterior</button>
+    <button id="btnSiguiente" onclick="nextSection()">Siguiente</button>
+</div>
+
+<script>
+    let current = 0;
+    const sections = document.querySelectorAll("section");
+    const btnAnterior = document.getElementById("btnAnterior");
+    const btnSiguiente = document.getElementById("btnSiguiente");
+    const container = document.querySelector(".container");
+
+    function show(index) {
+      // Oculta la sección actual
+      if (sections[current]) {
+          sections[current].classList.remove("active");
+      }
+      
+      // Muestra la nueva sección
+      sections[index].classList.add("active");
+
+      btnAnterior.style.display = (index === 0) ? "none" : "inline-block";
+      btnSiguiente.style.display = (index === sections.length - 1) ? "none" : "inline-block";
+
+      const progreso = ((index + 1) / sections.length) * 100;
+      document.getElementById("barraProgreso").style.width = progreso + "%";
+      
+      // Scroll al inicio del contenedor
+      container.scrollIntoView({ behavior: 'smooth' });
+
+      // Elimina advertencia previa si existe
+      const advertencia = document.getElementById("advertencia-check");
+      if (advertencia) advertencia.remove();
+    }
+
+    function nextSection() {
+        const section13 = Array.from(sections).find(sec => sec.querySelector('h2')?.textContent.includes("13. RECOMENDACIONES"));
+
+        if (sections[current] === section13) {
+            const checkboxes = section13.querySelectorAll('input[type="checkbox"]');
+            const todosMarcados = Array.from(checkboxes).every(cb => cb.checked);
+
+            if (!todosMarcados) {
+                if (!document.getElementById("advertencia-check")) {
+                    const advertencia = document.createElement("p");
+                    advertencia.id = "advertencia-check";
+                    advertencia.textContent = "⚠️ Por favor, marca todos los ítems para confirmar antes de continuar.";
+                    advertencia.style.color = "red";
+                    advertencia.style.fontWeight = "bold";
+                    advertencia.style.marginTop = "15px";
+                    advertencia.style.textAlign = "center";
+                    section13.querySelector('.checklist').appendChild(advertencia);
+                }
+                return; // No avanzar
+            }
+        }
+
+        if (current < sections.length - 1) {
+            current++;
+            show(current);
+        }
+    }
+
+    function prevSection() {
+        if (current > 0) {
+            current--;
+            show(current);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => show(current));
+</script>
+
+</body>
+</html>
